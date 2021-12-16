@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 enum UnsplashAPI {
   static let accessToken = "MQztSXCJdIvjq_ycJ_VrXLnF0dMx9jOjbyIbxljY1gA"
   
-  static func randomImage(completion: @escaping (ResUnsplash?) -> Void) {
+  static func randomImage() -> AnyPublisher<ResUnsplash, GameError> {
     let url = URL(string: "https://api.unsplash.com/photos/random/?client_id=\(accessToken)")!
 
     let config = URLSessionConfiguration.default
@@ -21,19 +22,33 @@ enum UnsplashAPI {
     var urlRequst = URLRequest(url: url)
     urlRequst.addValue("Accept-Version", forHTTPHeaderField: "v1")
 
-    session.dataTask(with: urlRequst) { data, response, error in
-      guard let response = response as? HTTPURLResponse,
-            response.statusCode == 200,
-            error == nil,
-            let data = data,
-            let decodedResponse = try? JSONDecoder().decode(ResUnsplash.self, from: data)
-      else {
-
-        completion(nil)
-        return
+    return session.dataTaskPublisher(for: urlRequst)
+      .tryMap { response in
+        guard let httpResponse = response.response as? HTTPURLResponse,
+              httpResponse.statusCode == 200
+        else {
+          throw GameError.statusCode
+        }
+        return response.data
       }
-
-      completion(decodedResponse)
-    }.resume()
+      .decode(type: ResUnsplash.self, decoder: JSONDecoder())
+      .mapError { GameError.map($0) }
+      .eraseToAnyPublisher()
+    
+    
+//    session.dataTask(with: urlRequst) { data, response, error in
+//      guard let response = response as? HTTPURLResponse,
+//            response.statusCode == 200,
+//            error == nil,
+//            let data = data,
+//            let decodedResponse = try? JSONDecoder().decode(ResUnsplash.self, from: data)
+//      else {
+//
+//        completion(nil)
+//        return
+//      }
+//
+//      completion(decodedResponse)
+//    }.resume()
   }
 }

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
+  
+  var subscriptions = Set<AnyCancellable>()
   
   @IBOutlet var gameImageView: [UIImageView]!
   
@@ -28,24 +31,52 @@ class ViewController: UIViewController {
   }
   
   @IBAction func pressStateButton(_ sender: Any) {
-    UnsplashAPI.randomImage { resUnsplash in
-      guard let url = resUnsplash?.urls.regular else {
-        print(#fileID, "||", #function, "||", #line)
-        return
+    
+    let firstImage = UnsplashAPI.randomImage()
+      .flatMap { randomImageResponse in
+        ImageDownloader.download(url: randomImageResponse.urls.regular)
       }
-      ImageDownloader.download(url: url) { [unowned self] image in
-        guard let image = image else {
-          print(#fileID, "||", #function, "||", #line)
-          return
+    
+    let secondImage = UnsplashAPI.randomImage()
+      .flatMap { randomImageResponse in
+        ImageDownloader.download(url: randomImageResponse.urls.regular)
+      }
+    
+    firstImage.zip(secondImage)
+      .receive(on: DispatchQueue.main)
+      .sink(receiveCompletion: { completion in
+        switch completion {
+        case .finished: break
+        case .failure(let error):
+          print("Error: \(error)")
+            
         }
-        self.gameImage.append(contentsOf: [image, image, image, image])
-        self.gameImage.shuffle()
         
-        DispatchQueue.main.async {
-          setImage()
-        }
-      }
-    }
+      }, receiveValue: { [unowned self] first, second in
+        self.gameImage = [first, second, second, second].shuffled()
+        self.setImage()
+      })
+      .store(in: &subscriptions)
+    
+    
+//    UnsplashAPI.randomImage { resUnsplash in
+//      guard let url = resUnsplash?.urls.regular else {
+//        print(#fileID, "||", #function, "||", #line)
+//        return
+//      }
+//      ImageDownloader.download(url: url) { [unowned self] image in
+//        guard let image = image else {
+//          print(#fileID, "||", #function, "||", #line)
+//          return
+//        }
+//        self.gameImage.append(contentsOf: [image, image, image, image])
+//        self.gameImage.shuffle()
+//
+//        DispatchQueue.main.async {
+//          setImage()
+//        }
+//      }
+//    }
   }
   
 }
