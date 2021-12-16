@@ -13,40 +13,43 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="practice_FindOrLose_UIkit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agj-tQ-iSD">
-                                <rect key="frame" x="35" y="224.33333333333334" width="42" height="21"/>
+                                <rect key="frame" x="35" y="254.66666666666663" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrX-6N-rfp">
-                                <rect key="frame" x="35" y="598.66666666666663" width="305" height="50"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DrX-6N-rfp" userLabel="State Button">
+                                <rect key="frame" x="35" y="682" width="358" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="mT7-B6-guQ"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Play"/>
+                                <connections>
+                                    <action selector="pressStateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tb8-16-lSF"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CCM-kX-6ku">
-                                <rect key="frame" x="35" y="416" width="142.66666666666666" height="142.66666666666663"/>
+                                <rect key="frame" x="35" y="473" width="169" height="169"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CCM-kX-6ku" secondAttribute="height" multiplier="1:1" id="xnH-0N-TQB"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jlf-5w-clG">
-                                <rect key="frame" x="197.66666666666663" y="416" width="142.33333333333337" height="142.66666666666663"/>
+                                <rect key="frame" x="224" y="473" width="169" height="169"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jlf-5w-clG" secondAttribute="height" multiplier="1:1" id="sMc-Cu-4c9"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-qh-OlW">
-                                <rect key="frame" x="197.66666666666663" y="253.66666666666663" width="142.33333333333337" height="142.33333333333337"/>
+                                <rect key="frame" x="224" y="284" width="169" height="169"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nhk-iE-Q7e">
-                                <rect key="frame" x="35" y="253.66666666666663" width="142.66666666666666" height="142.33333333333337"/>
+                                <rect key="frame" x="35" y="284" width="169" height="169"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nhk-iE-Q7e" secondAttribute="height" multiplier="1:1" id="teU-rC-C5Y"/>
                                 </constraints>
@@ -76,6 +79,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="ave-ZB-3jL"/>
+                    <connections>
+                        <outletCollection property="gameImageView" destination="CCM-kX-6ku" collectionClass="NSMutableArray" id="7Xv-ms-0ia"/>
+                        <outletCollection property="gameImageView" destination="Jlf-5w-clG" collectionClass="NSMutableArray" id="mlQ-uJ-rIs"/>
+                        <outletCollection property="gameImageView" destination="nhk-iE-Q7e" collectionClass="NSMutableArray" id="h3e-VA-Ouv"/>
+                        <outletCollection property="gameImageView" destination="JOu-qh-OlW" collectionClass="NSMutableArray" id="SFD-Hi-CJh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

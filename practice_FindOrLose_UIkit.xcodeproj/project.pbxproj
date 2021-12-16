@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD7AE850276B00BB008EAA37 /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AE84F276B00BB008EAA37 /* GameError.swift */; };
 		BD8222AF276AB044000FD52C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8222AE276AB044000FD52C /* AppDelegate.swift */; };
 		BD8222B1276AB044000FD52C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8222B0276AB044000FD52C /* SceneDelegate.swift */; };
 		BD8222B3276AB044000FD52C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8222B2276AB044000FD52C /* ViewController.swift */; };
 		BD8222B6276AB044000FD52C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8222B4276AB044000FD52C /* Main.storyboard */; };
 		BD8222B8276AB046000FD52C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD8222B7276AB046000FD52C /* Assets.xcassets */; };
 		BD8222BB276AB046000FD52C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8222B9276AB046000FD52C /* LaunchScreen.storyboard */; };
+		BDAB61F2276AD0BE00A15D5B /* ResUnsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAB61F1276AD0BE00A15D5B /* ResUnsplash.swift */; };
+		BDAB61F5276AD13A00A15D5B /* UnsplashAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAB61F4276AD13A00A15D5B /* UnsplashAPI.swift */; };
+		BDAB61F7276ADDDF00A15D5B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAB61F6276ADDDF00A15D5B /* ImageDownloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD7AE84F276B00BB008EAA37 /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
 		BD8222AB276AB044000FD52C /* practice_FindOrLose_UIkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = practice_FindOrLose_UIkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD8222AE276AB044000FD52C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD8222B0276AB044000FD52C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		BD8222B7276AB046000FD52C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD8222BA276AB046000FD52C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD8222BC276AB046000FD52C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDAB61F1276AD0BE00A15D5B /* ResUnsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResUnsplash.swift; sourceTree = "<group>"; };
+		BDAB61F4276AD13A00A15D5B /* UnsplashAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPI.swift; sourceTree = "<group>"; };
+		BDAB61F6276ADDDF00A15D5B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD7AE84E276B00A2008EAA37 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				BD8222B2276AB044000FD52C /* ViewController.swift */,
+				BD7AE84F276B00BB008EAA37 /* GameError.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		BD8222A2276AB044000FD52C = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +73,34 @@
 		BD8222AD276AB044000FD52C /* practice_FindOrLose_UIkit */ = {
 			isa = PBXGroup;
 			children = (
+				BD7AE84E276B00A2008EAA37 /* Game */,
+				BDAB61F3276AD12600A15D5B /* Network */,
+				BDAB61F0276ACF5A00A15D5B /* Model */,
 				BD8222AE276AB044000FD52C /* AppDelegate.swift */,
 				BD8222B0276AB044000FD52C /* SceneDelegate.swift */,
-				BD8222B2276AB044000FD52C /* ViewController.swift */,
 				BD8222B4276AB044000FD52C /* Main.storyboard */,
 				BD8222B7276AB046000FD52C /* Assets.xcassets */,
 				BD8222B9276AB046000FD52C /* LaunchScreen.storyboard */,
 				BD8222BC276AB046000FD52C /* Info.plist */,
 			);
 			path = practice_FindOrLose_UIkit;
+			sourceTree = "<group>";
+		};
+		BDAB61F0276ACF5A00A15D5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BDAB61F1276AD0BE00A15D5B /* ResUnsplash.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BDAB61F3276AD12600A15D5B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BDAB61F4276AD13A00A15D5B /* UnsplashAPI.swift */,
+				BDAB61F6276ADDDF00A15D5B /* ImageDownloader.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDAB61F2276AD0BE00A15D5B /* ResUnsplash.swift in Sources */,
+				BDAB61F5276AD13A00A15D5B /* UnsplashAPI.swift in Sources */,
+				BD7AE850276B00BB008EAA37 /* GameError.swift in Sources */,
 				BD8222B3276AB044000FD52C /* ViewController.swift in Sources */,
 				BD8222AF276AB044000FD52C /* AppDelegate.swift in Sources */,
+				BDAB61F7276ADDDF00A15D5B /* ImageDownloader.swift in Sources */,
 				BD8222B1276AB044000FD52C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
