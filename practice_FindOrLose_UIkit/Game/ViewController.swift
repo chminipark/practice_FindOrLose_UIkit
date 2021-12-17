@@ -38,12 +38,18 @@ class ViewController: UIViewController {
   }
   
   // MARK: - IBAction
-  @IBAction func stateButtonAction(_ sender: Any) {
+  @IBAction func stateButtonAction(_ sender: UIButton) {
     toggleButton()
   }
   
-  @IBAction func imageButtonAction(_ sender: Any) {
-    print((sender as AnyObject).tag)
+  @IBAction func imageButtonAction(_ sender: UIButton) {
+    let selectedImage = gameImages.filter { $0 == gameImages[sender.tag] }
+    
+    if selectedImage.count == 1 {
+      playGame()
+    } else {
+      stopGame()
+    }
   }
   
   
