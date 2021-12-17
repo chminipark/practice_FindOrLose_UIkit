@@ -10,20 +10,53 @@ import Combine
 
 class ViewController: UIViewController {
   // MARK: - Properties
-  @IBOutlet var gameImageView: [UIImageView]!
+  @IBOutlet var gameImageViews: [UIImageView]!
+  @IBOutlet var activityIndicators: [UIActivityIndicatorView]!
+  @IBOutlet weak var stateButton: UIButton!
   
-  var gameImage: [UIImage] = []
+  var gameState: GameState = .stop {
+    didSet {
+      if gameState == .play {
+        playGame()
+      } else{
+        stopGame()
+      }
+    }
+  }
+  
+  var gameImages: [UIImage] = []
   
   var subscriptions = Set<AnyCancellable>()
   
   // MARK: - App State
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+    title = "FindORLose 👻"
+    self.stateButton.setTitle("Play", for: .normal)
+    self.stateButton.setTitleColor(.white, for: .normal)
+    self.stateButton.tintColor = .link
   }
   
   // MARK: - IBAction
   @IBAction func stateButtonAction(_ sender: Any) {
+    toggleButton()
+  }
+  
+  @IBAction func imageButtonAction(_ sender: Any) {
+    print((sender as AnyObject).tag)
+  }
+  
+  
+  // MARK: - functions
+  
+  func playGame() {
+    
+    DispatchQueue.main.async { [unowned self] in
+      self.title = "FindORLose 🔥🔥🔥"
+      self.stateButton.setTitle("Stop", for: .normal)
+      self.stateButton.setTitleColor(.black, for: .normal)
+      self.stateButton.tintColor = .yellow
+    }
     
     let firstImage = UnsplashAPI.randomImage()
       .flatMap { randomImageResponse in
@@ -46,7 +79,7 @@ class ViewController: UIViewController {
         }
         
       }, receiveValue: { [unowned self] first, second in
-        self.gameImage = [first, second, second, second].shuffled()
+        self.gameImages = [first, second, second, second].shuffled()
         self.setImage()
       })
       .store(in: &subscriptions)
@@ -61,8 +94,8 @@ class ViewController: UIViewController {
     //          print(#fileID, "||", #function, "||", #line)
     //          return
     //        }
-    //        self.gameImage.append(contentsOf: [image, image, image, image])
-    //        self.gameImage.shuffle()
+    //        self.gameImages.append(contentsOf: [image, image, image, image])
+    //        self.gameImages.shuffle()
     //
     //        DispatchQueue.main.async {
     //          setImage()
@@ -71,20 +104,41 @@ class ViewController: UIViewController {
     //    }
   }
   
-  @IBAction func imageButtonAction(_ sender: Any) {
-    print((sender as AnyObject).tag)
+  func stopGame() {
+    gameImages.removeAll()
+    DispatchQueue.main.async { [unowned self] in
+      self.gameImageViews.forEach { $0.image = nil }
+      self.stateButton.setTitle("Play", for: .normal)
+      self.stateButton.setTitleColor(.white, for: .normal)
+      self.stateButton.tintColor = .link
+      self.title = "FindORLose 👻"
+    }
+    startActivityIndicator()
   }
   
-  
-  // MARK: - functions
+  func toggleButton() {
+    if gameState == .play {
+      gameState = .stop
+    } else {
+      gameState = .play
+    }
+  }
   
   func setImage() {
-    if gameImage.count == 4 {
-      for (idx, image) in gameImage.enumerated() {
-        gameImageView[idx].image = image
-        gameImageView[idx].contentMode = .scaleToFill
+    if gameImages.count == 4 {
+      for (idx, image) in gameImages.enumerated() {
+        gameImageViews[idx].image = image
+        gameImageViews[idx].contentMode = .scaleToFill
       }
     }
+  }
+  
+  func startActivityIndicator() {
+    activityIndicators.forEach { $0.startAnimating() }
+  }
+  
+  func stopActivityIndicator() {
+    activityIndicators.forEach { $0.stopAnimating() }
   }
   
   

@@ -54,6 +54,34 @@
                                     <constraint firstAttribute="width" secondItem="Jlf-5w-clG" secondAttribute="height" multiplier="1:1" id="sMc-Cu-4c9"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="65H-qQ-Eui" userLabel="Medium Activity Indicator1">
+                                <rect key="frame" x="89.666666666666671" y="338.66666666666669" width="60.000000000000014" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="XDo-pD-2yR"/>
+                                    <constraint firstAttribute="height" constant="60" id="lbF-4t-zAG"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zrU-XA-Ozb" userLabel="Medium Activity Indicator2">
+                                <rect key="frame" x="278.66666666666669" y="338.66666666666669" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="DCZ-hS-y2B"/>
+                                    <constraint firstAttribute="height" constant="60" id="WXv-R3-U1O"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ka0-QF-n67" userLabel="Medium Activity Indicator3">
+                                <rect key="frame" x="89.666666666666671" y="527.66666666666663" width="60.000000000000014" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Noj-6x-9R5"/>
+                                    <constraint firstAttribute="height" constant="60" id="SXR-J5-35T"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="o5p-Ft-GBa" userLabel="Medium Activity Indicator4">
+                                <rect key="frame" x="278.66666666666669" y="527.66666666666663" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="GhN-66-H1E"/>
+                                    <constraint firstAttribute="height" constant="60" id="d9h-QA-S8c"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sny-PX-WaK" userLabel="Button1">
                                 <rect key="frame" x="35" y="284" width="169" height="169"/>
                                 <state key="normal" title="Button"/>
@@ -86,34 +114,6 @@
                                     <action selector="imageButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6uL-71-dln"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="65H-qQ-Eui" userLabel="Medium Activity Indicator1">
-                                <rect key="frame" x="89.666666666666671" y="338.66666666666669" width="60.000000000000014" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="XDo-pD-2yR"/>
-                                    <constraint firstAttribute="height" constant="60" id="lbF-4t-zAG"/>
-                                </constraints>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zrU-XA-Ozb" userLabel="Medium Activity Indicator2">
-                                <rect key="frame" x="278.66666666666669" y="338.66666666666669" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="DCZ-hS-y2B"/>
-                                    <constraint firstAttribute="height" constant="60" id="WXv-R3-U1O"/>
-                                </constraints>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Ka0-QF-n67" userLabel="Medium Activity Indicator3">
-                                <rect key="frame" x="89.666666666666671" y="527.66666666666663" width="60.000000000000014" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="Noj-6x-9R5"/>
-                                    <constraint firstAttribute="height" constant="60" id="SXR-J5-35T"/>
-                                </constraints>
-                            </activityIndicatorView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="o5p-Ft-GBa" userLabel="Medium Activity Indicator4">
-                                <rect key="frame" x="278.66666666666669" y="527.66666666666663" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="GhN-66-H1E"/>
-                                    <constraint firstAttribute="height" constant="60" id="d9h-QA-S8c"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -164,10 +164,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="ave-ZB-3jL"/>
                     <connections>
-                        <outletCollection property="gameImageView" destination="CCM-kX-6ku" collectionClass="NSMutableArray" id="7Xv-ms-0ia"/>
-                        <outletCollection property="gameImageView" destination="Jlf-5w-clG" collectionClass="NSMutableArray" id="mlQ-uJ-rIs"/>
-                        <outletCollection property="gameImageView" destination="nhk-iE-Q7e" collectionClass="NSMutableArray" id="h3e-VA-Ouv"/>
-                        <outletCollection property="gameImageView" destination="JOu-qh-OlW" collectionClass="NSMutableArray" id="SFD-Hi-CJh"/>
+                        <outlet property="stateButton" destination="DrX-6N-rfp" id="CfI-PH-8su"/>
+                        <outletCollection property="gameImageViews" destination="CCM-kX-6ku" collectionClass="NSMutableArray" id="7Xv-ms-0ia"/>
+                        <outletCollection property="gameImageViews" destination="Jlf-5w-clG" collectionClass="NSMutableArray" id="mlQ-uJ-rIs"/>
+                        <outletCollection property="gameImageViews" destination="nhk-iE-Q7e" collectionClass="NSMutableArray" id="h3e-VA-Ouv"/>
+                        <outletCollection property="gameImageViews" destination="JOu-qh-OlW" collectionClass="NSMutableArray" id="SFD-Hi-CJh"/>
+                        <outletCollection property="activityIndicators" destination="65H-qQ-Eui" collectionClass="NSMutableArray" id="ZKm-H5-1jL"/>
+                        <outletCollection property="activityIndicators" destination="zrU-XA-Ozb" collectionClass="NSMutableArray" id="4Jo-bD-GPb"/>
+                        <outletCollection property="activityIndicators" destination="Ka0-QF-n67" collectionClass="NSMutableArray" id="TXh-3c-ae4"/>
+                        <outletCollection property="activityIndicators" destination="o5p-Ft-GBa" collectionClass="NSMutableArray" id="VG1-ul-cYz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
