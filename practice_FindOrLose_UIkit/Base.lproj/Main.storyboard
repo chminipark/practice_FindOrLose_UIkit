@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agj-tQ-iSD">
-                                <rect key="frame" x="35" y="254.66666666666663" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agj-tQ-iSD">
+                                <rect key="frame" x="35" y="253.66666666666663" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -164,6 +164,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="ave-ZB-3jL"/>
                     <connections>
+                        <outlet property="scoreLabel" destination="agj-tQ-iSD" id="tRh-em-0Wl"/>
                         <outlet property="stateButton" destination="DrX-6N-rfp" id="CfI-PH-8su"/>
                         <outletCollection property="activityIndicators" destination="65H-qQ-Eui" collectionClass="NSMutableArray" id="ZKm-H5-1jL"/>
                         <outletCollection property="activityIndicators" destination="zrU-XA-Ozb" collectionClass="NSMutableArray" id="4Jo-bD-GPb"/>

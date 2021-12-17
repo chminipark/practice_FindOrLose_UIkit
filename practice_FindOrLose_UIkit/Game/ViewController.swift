@@ -13,6 +13,7 @@ class ViewController: UIViewController {
   @IBOutlet var gameImageViews: [UIImageView]!
   @IBOutlet var activityIndicators: [UIActivityIndicatorView]!
   @IBOutlet weak var stateButton: UIButton!
+  @IBOutlet weak var scoreLabel: UILabel!
   
   var gameState: GameState = .stop {
     didSet {
@@ -24,9 +25,10 @@ class ViewController: UIViewController {
     }
   }
   
+  var gameTimer: AnyCancellable?
   var gameImages: [UIImage] = []
-  
   var subscriptions = Set<AnyCancellable>()
+  var score: Int = 0
   
   // MARK: - App State
   override func viewDidLoad() {
@@ -35,6 +37,7 @@ class ViewController: UIViewController {
     self.stateButton.setTitle("Play", for: .normal)
     self.stateButton.setTitleColor(.white, for: .normal)
     self.stateButton.tintColor = .link
+    self.scoreLabel.text = "Score : \(score)"
   }
   
   // MARK: - IBAction
@@ -57,11 +60,14 @@ class ViewController: UIViewController {
   
   func playGame() {
     
+    
     DispatchQueue.main.async { [unowned self] in
       self.title = "FindORLose 🔥🔥🔥"
       self.stateButton.setTitle("Stop", for: .normal)
       self.stateButton.setTitleColor(.black, for: .normal)
       self.stateButton.tintColor = .yellow
+      score += 200
+      self.scoreLabel.text = "Score : \(score)"
     }
     
     let firstImage = UnsplashAPI.randomImage()
@@ -86,7 +92,23 @@ class ViewController: UIViewController {
         
       }, receiveValue: { [unowned self] first, second in
         self.gameImages = [first, second, second, second].shuffled()
-        self.setImage()
+        
+        self.scoreLabel.text = "Score : \(score)"
+        
+        self.gameTimer = Timer.publish(every: 0.1, on: RunLoop.main, in: .common)
+          .autoconnect()
+          .sink { [unowned self] _ in
+            self.scoreLabel.text = "Score : \(score)"
+            self.score -= 10
+            
+            if score < 0 {
+              score = 0
+              gameTimer?.cancel()
+            }
+          }
+        
+        stopActivityIndicator()
+        setImage()
       })
       .store(in: &subscriptions)
     
@@ -111,6 +133,11 @@ class ViewController: UIViewController {
   }
   
   func stopGame() {
+    // subscription, anycancellable????
+    subscriptions.forEach { $0.cancel() }
+    
+    gameTimer?.cancel()
+    
     gameImages.removeAll()
     DispatchQueue.main.async { [unowned self] in
       self.gameImageViews.forEach { $0.image = nil }
@@ -118,8 +145,11 @@ class ViewController: UIViewController {
       self.stateButton.setTitleColor(.white, for: .normal)
       self.stateButton.tintColor = .link
       self.title = "FindORLose 👻"
+      score = 0
+      self.scoreLabel.text = "Score : \(score)"
     }
     startActivityIndicator()
+    resetImage()
   }
   
   func toggleButton() {
@@ -137,6 +167,12 @@ class ViewController: UIViewController {
         gameImageViews[idx].contentMode = .scaleToFill
       }
     }
+  }
+  
+  func resetImage() {
+    subscriptions = []
+    gameImages = []
+    gameImageViews.forEach { $0.image = nil }
   }
   
   func startActivityIndicator() {
